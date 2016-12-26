@@ -1,0 +1,4 @@
+<plugin>
+    <name>implicit-dependent-type</name>
+    <classname>com.thoughtworks.ImplicitDependentType</classname>
+</plugin>
