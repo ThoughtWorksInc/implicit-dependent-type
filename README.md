@@ -1,4 +1,5 @@
-# Implicit Dependent Type plugin
+# Implicit Dependent Type plugin <a href="http://thoughtworks.com/"><img align="right" src="https://www.thoughtworks.com/imgs/tw-logo.png" title="ThoughtWorks" height="15"/></a>
+
 [![Build Status](https://travis-ci.org/ThoughtWorksInc/implicit-dependent-type.svg)](https://travis-ci.org/ThoughtWorksInc/implicit-dependent-type)
 
 **Implicit Dependent Type plugin** is a Scala compiler plugin that resolves dependent types from implicit type classes, 
