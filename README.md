@@ -7,11 +7,24 @@ especially useful when working with [Shapeless](https://github.com/milessabin/sh
 
 This plugin provides a syntactic sugar that substitutes all `Foo[Bar]##Baz` with ```shapeless.the.`Foo[Bar]`.Baz```.
 
+
 ``` scala
 import shapeless._
 
 final case class Foo(bar: Int, baz: String)
 
 val hlistForFoo: Generic[Foo]##Repr = 1 :: "xxx" :: HNil
+val foo: Foo = Generic[Foo].from(hlistForFoo)
+```
+
+The above example equals to the following code:
+
+``` scala
+import shapeless._
+
+final case class Foo(bar: Int, baz: String)
+
+val g = Generic[Foo]
+val hlistForFoo: g.Repr = 1 :: "xxx" :: HNil
 val foo: Foo = Generic[Foo].from(hlistForFoo)
 ```
