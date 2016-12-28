@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/ThoughtWorksInc/implicit-dependent-type.svg)](https://travis-ci.org/ThoughtWorksInc/implicit-dependent-type)
 
 **implicit-dependent-type** is a Scala compiler plugin that resolves dependent types from implicit type classes,
-especially useful when working with [Shapeless](https://github.com/milessabin/shapeless) or other type-level programming frameworks.
+especially useful when working with [shapeless](https://github.com/milessabin/shapeless) or other type-level programming libraries.
 
 This plugin provides a syntactic sugar that substitutes all `Foo[Bar]##Baz` with ```shapeless.the.`Foo[Bar]`.Baz```,
 which inlines resolved implicit type classes into type declaration positions.
