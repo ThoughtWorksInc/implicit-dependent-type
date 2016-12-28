@@ -37,5 +37,5 @@ val foo: Foo = Generic[Foo].from(hlistForFoo)
 ```
 
 As you see, without this plugin, `Generic[Foo]` is not a stable value,
-thus it is unable to inline to a type position.
+thus it is unable to be placed at a type position.
 You will have to assign it to a temporary variable `g`.
