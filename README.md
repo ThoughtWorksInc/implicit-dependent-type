@@ -1,7 +1,6 @@
 # implicit-dependent-type <a href="http://thoughtworks.com/"><img align="right" src="https://www.thoughtworks.com/imgs/tw-logo.png" title="ThoughtWorks" height="15"/></a>
 
 [![Join the chat at https://gitter.im/ThoughtWorksInc/implicit-dependent-type](https://badges.gitter.im/ThoughtWorksInc/implicit-dependent-type.svg)](https://gitter.im/ThoughtWorksInc/implicit-dependent-type?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 [![Build Status](https://travis-ci.org/ThoughtWorksInc/implicit-dependent-type.svg)](https://travis-ci.org/ThoughtWorksInc/implicit-dependent-type)
 
 **implicit-dependent-type** is a Scala compiler plugin that resolves dependent types from implicit type classes,
