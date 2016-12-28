@@ -40,4 +40,4 @@ As you see, without this plugin, `Generic[Foo]` is not a stable value,
 thus it is unable to be placed at a type position.
 You will have to assign it to a temporary variable `g`.
 
-This plugin resolve this problem.
+This plugin resolves this problem.
