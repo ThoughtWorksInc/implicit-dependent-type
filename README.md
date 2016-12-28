@@ -7,7 +7,7 @@
 especially useful when working with [Shapeless](https://github.com/milessabin/shapeless) or other type-level programming frameworks.
 
 This plugin provides a syntactic sugar that substitutes all `Foo[Bar]##Baz` with ```shapeless.the.`Foo[Bar]`.Baz```,
-which inlines the resolved implicit type class into the type declaration position.
+which inlines resolved implicit type classes into type declaration positions.
 
 ``` sbt
 addCompilerPlugin("com.thoughtworks.implicit-dependent-type" %% "implicit-dependent-type" % "latest.release")
