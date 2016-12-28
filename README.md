@@ -2,11 +2,17 @@
 
 [![Build Status](https://travis-ci.org/ThoughtWorksInc/implicit-dependent-type.svg)](https://travis-ci.org/ThoughtWorksInc/implicit-dependent-type)
 
-**implicit-dependent-type** is a Scala compiler plugin that resolves dependent types from implicit type classes, 
+**implicit-dependent-type** is a Scala compiler plugin that resolves dependent types from implicit type classes,
 especially useful when working with [Shapeless](https://github.com/milessabin/shapeless) or other type-level programming frameworks.
 
-This plugin provides a syntactic sugar that substitutes all `Foo[Bar]##Baz` with ```shapeless.the.`Foo[Bar]`.Baz```.
+This plugin provides a syntactic sugar that substitutes all `Foo[Bar]##Baz` with ```shapeless.the.`Foo[Bar]`.Baz```,
+which inlines the implicit type class resolving into the type declaration position.
 
+``` sbt
+addCompilerPlugin("com.thoughtworks.implicit-dependent-type" %% "implicit-dependent-type" % "latest.release")
+
+libraryDependencies += "com.chuusai" %% "shapeless" % "latest.release"
+```
 
 ``` scala
 import shapeless._
@@ -28,3 +34,7 @@ val g = Generic[Foo]
 val hlistForFoo: g.Repr = 1 :: "xxx" :: HNil
 val foo: Foo = Generic[Foo].from(hlistForFoo)
 ```
+
+As you see, without this plugin, `Generic[Foo]` is not a stable value,
+thus it is unable to inline to a type position.
+You will have to assign it to a temporary variable `g`.
