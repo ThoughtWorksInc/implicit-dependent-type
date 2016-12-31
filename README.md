@@ -12,6 +12,8 @@ which inlines resolved implicit type classes into type declaration positions.
 ``` sbt
 addCompilerPlugin("com.thoughtworks.implicit-dependent-type" %% "implicit-dependent-type" % "latest.release")
 
+addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
+
 libraryDependencies += "com.chuusai" %% "shapeless" % "latest.release"
 ```
 
