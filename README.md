@@ -6,8 +6,7 @@
 **implicit-dependent-type** is a Scala compiler plugin that resolves dependent types from implicit type classes,
 especially useful when working with [shapeless](https://github.com/milessabin/shapeless) or other type-level programming libraries.
 
-This plugin provides a syntactic sugar that substitutes all `Foo[Bar]##Baz` with ```shapeless.the.`Foo[Bar]`.Baz```,
-which inlines resolved implicit type classes into type declaration positions.
+## Setup
 
 ``` sbt
 addCompilerPlugin("com.thoughtworks.implicit-dependent-type" %% "implicit-dependent-type" % "latest.release")
@@ -16,6 +15,11 @@ addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.fu
 
 libraryDependencies += "com.chuusai" %% "shapeless" % "latest.release"
 ```
+
+## `Foo[Bar]##Baz` syntax
+
+This plugin provides a syntactic sugar that substitutes all `Foo[Bar]##Baz` with ```shapeless.the.`Foo[Bar]`.Baz```,
+which inlines resolved implicit type classes into type declaration positions.
 
 ``` scala
 import shapeless._
@@ -43,3 +47,28 @@ thus it is unable to be placed at a type position.
 You will have to assign it to a temporary variable `g`.
 
 This plugin resolves this problem.
+
+## `Foo @Bar` syntax
+
+Another syntactic sugar provided by this plugin is converting `Foo @Bar` to ```shapeless.the.`Bar[Foo]`.`@` ```.
+
+For example:
+
+``` scala
+trait GetElement[A] {
+  type `@`
+}
+
+implicit def getArrayElement[Element] = new GetElement[Array[Element]] {
+  override type `@` = Element
+}
+
+val i: Array[Int] @GetElement = 1
+val s: Array[String] @GetElement = "text"
+```
+
+In the above example, `@GetElement` acts as a type level function, calculating the element type of given type
+
+
+Note that the `Foo @Bar` syntax only applied if `Bar` starts with an upper case character.
+Thus, this plugin does not affect built-in annotations like `@specialize`, `@cps` or `@suspendable` because they start with a lower case character.

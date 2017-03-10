@@ -15,9 +15,22 @@ final class ImplicitDependentType(override val global: Global) extends Plugin {
     override val phaseName: String = ImplicitDependentType.this.name
     override val runsAfter: List[String] = List("parser")
     import global._
+
+    private def startsWithUpperCase(typeTree: Tree) = {
+      typeTree match {
+        case tq"$prefix.${TypeName(typeName)}" if typeName(0).isUpper => true
+        case Ident(TypeName(typeName)) if typeName(0).isUpper => true
+        case _ => false
+      }
+    }
+
     override protected def newTransformer(unit: global.CompilationUnit) = new Transformer {
       override def transform(tree: Tree): Tree = {
         tree match {
+          case tq"$typeParameter @$annotation" if startsWithUpperCase(annotation) =>
+            atPos(tree.pos) {
+              tq"_root_.shapeless.the.${newTermName(show(tq"$annotation[$typeParameter]"))}.`@`"
+            }
           case tq"$prefix##$subtree" =>
             val shapelessPrefix = atPos(prefix.pos) {
               q"_root_.shapeless.the.${newTermName(show(prefix))}"
@@ -42,7 +55,9 @@ final class ImplicitDependentType(override val global: Global) extends Plugin {
                 }
               }
             }
-            replaceSubtree(subtree)
+            atPos(tree.pos) {
+              replaceSubtree(subtree)
+            }
           case _ =>
             super.transform(tree)
         }
