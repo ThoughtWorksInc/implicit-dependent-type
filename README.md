@@ -67,7 +67,7 @@ val i: Array[Int] @GetElement = 1
 val s: Array[String] @GetElement = "text"
 ```
 
-In the above example, `@GetElement` acts as a type level function, calculating the element type of given type
+In the above example, `@GetElement` acts as a type level function, calculating the element type of the given type.
 
 
 Note that the `Foo @Bar` syntax only applied if `Bar` starts with an upper case character.
