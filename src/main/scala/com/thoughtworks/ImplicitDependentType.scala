@@ -18,8 +18,8 @@ final class ImplicitDependentType(override val global: Global) extends Plugin {
 
     private def startsWithUpperCase(typeTree: Tree) = {
       typeTree match {
-        case tq"$prefix.${TypeName(typeName)}" if typeName(0).isUpper => true
-        case Ident(TypeName(typeName)) if typeName(0).isUpper => true
+        case tq"$prefix.${typeName}" if typeName.toString.charAt(0).isUpper => true
+        case Ident(typeName) if typeName.toString.charAt(0).isUpper => true
         case _ => false
       }
     }
