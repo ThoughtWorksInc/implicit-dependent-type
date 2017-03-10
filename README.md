@@ -48,7 +48,7 @@ You will have to assign it to a temporary variable `g`.
 
 This plugin resolves this problem.
 
-## `Foo @Bar` syntax
+## `Foo @Bar` syntax (since 2.0)
 
 Another syntactic sugar provided by this plugin is converting `Foo @Bar` to ```shapeless.the.`Bar[Foo]`.`@` ```.
 
