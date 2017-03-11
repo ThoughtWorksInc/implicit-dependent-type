@@ -50,7 +50,7 @@ This plugin resolves this problem.
 
 ## `Foo @Bar` syntax (since 2.0)
 
-Another syntactic sugar provided by this plugin is converting `Foo @Bar` to ```shapeless.the.`Bar[Foo]`.`@` ```.
+Another syntactic sugar provided by this plugin is `Foo @Bar`, which will be converted to ```shapeless.the.`Bar[Foo]`.`@` ```.
 
 For example:
 
