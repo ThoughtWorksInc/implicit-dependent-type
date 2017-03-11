@@ -63,8 +63,14 @@ implicit def getArrayElement[Element] = new GetElement[Array[Element]] {
   override type `@` = Element
 }
 
+implicit def getSeqElement[Element] = new GetElement[Seq[Element]] {
+  override type `@` = Element
+}
+
 val i: Array[Int] @GetElement = 1
-val s: Array[String] @GetElement = "text"
+val s: Seq[String] @GetElement = "text"
+
+val d: Option[Double] @GetElement = 0.5 // Does not compile because no implicit GetElement[Option[Double]] found
 ```
 
 In the above example, `@GetElement` acts as a type level function, calculating the element type of the given type.
