@@ -1,6 +1,6 @@
 organization in ThisBuild := "com.thoughtworks.implicit-dependent-type"
 
-libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value
+libraryDependencies += "org.scala-lang" % "scala-compiler" % scalaVersion.value % Provided
 
 libraryDependencies += "com.chuusai" %% "shapeless" % "2.3.2" % Test
 
