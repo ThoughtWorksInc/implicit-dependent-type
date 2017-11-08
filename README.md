@@ -67,8 +67,8 @@ implicit def getSeqElement[Element] = new GetElement[Seq[Element]] {
   override type `@` = Element
 }
 
-val i: Array[Int] @GetElement = 1
-val s: Seq[String] @GetElement = "text"
+val i: Array[Int] @GetElement = 1 // OK
+val s: Seq[String] @GetElement = "text" // OK
 
 val d: Option[Double] @GetElement = 0.5 // Does not compile because no implicit GetElement[Option[Double]] found
 ```
